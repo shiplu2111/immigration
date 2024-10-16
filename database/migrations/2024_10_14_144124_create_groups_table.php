@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('group_name');
             $table->string('group_code')->nullable();
-            $table->unsignedBigInteger('create_by');
-            $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->tinyText('status')->nullable();
+            $table->tinyInteger('editable')->default(1);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

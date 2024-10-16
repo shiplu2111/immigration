@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('sub_agents', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+
             $table->string('company_name')->nullable();
             $table->string('phone');
-            $table->string('email')->unique();
             $table->string('address_one');
             $table->string('address_two')->nullable();
             $table->unsignedBigInteger('agent_id');

@@ -9,13 +9,15 @@ class Agent extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
         'company_name',
         'phone',
-        'email',
         'address_one',
         'address_two',
         'user_id',
         'create_by',
     ];
+
+    public function user(){
+        return $this->hasOne(User::class,'id');
+    }
 }

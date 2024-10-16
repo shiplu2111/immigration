@@ -9,13 +9,8 @@ class Status extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'document_received',
-        'submitted_for_work_permit',
-        'work_permit_received',
-        'submitted_for_visa',
-        'visa_received',
-        'migrated',
-        'create_by',
         'candidate_id',
+        'current_status',
+        'create_by',
     ];
 }

@@ -12,7 +12,7 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.status.index');
     }
 
     /**

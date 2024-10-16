@@ -14,12 +14,16 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->dateTime('dob');
-            $table->tinyInteger('marital_status');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('dob');
+            $table->string('country');
+            $table->tinyText('gender');
+            $table->tinyText('marital_status');
             $table->string('birth_place');
             $table->string('passport_number');
-            $table->dateTime('passport_issue_date');
-            $table->dateTime('passport_expiry_date');
+            $table->date('passport_issue_date');
+            $table->date('passport_expiry_date');
             $table->string('village');
             $table->string('thana');
             $table->string('district');
@@ -31,6 +35,7 @@ return new class extends Migration
             $table->string('father_name');
             $table->string('mother_name');
             $table->string('spouse_name')->nullable();
+            $table->tinyText('status')->default('New');
             $table->unsignedBigInteger('agent_id')->nullable();
             $table->unsignedBigInteger('create_by');
             $table->foreign('agent_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

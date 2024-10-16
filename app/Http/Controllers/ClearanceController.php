@@ -12,7 +12,7 @@ class ClearanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.clearance.index');
     }
 
     /**

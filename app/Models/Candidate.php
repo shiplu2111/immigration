@@ -10,6 +10,8 @@ class Candidate extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'group_id',
+        'country',
         'dob',
         'marital_status',
         'birth_place',
@@ -27,7 +29,9 @@ class Candidate extends Model
         'father_name',
         'mother_name',
         'spouse_name',
+        'gender',
         'agent_id',
         'create_by',
+        'status',
     ];
 }

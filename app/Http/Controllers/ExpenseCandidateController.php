@@ -12,7 +12,7 @@ class ExpenseCandidateController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.candidate_expence.index');
     }
 
     /**

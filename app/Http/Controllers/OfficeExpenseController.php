@@ -12,7 +12,7 @@ class OfficeExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.office-expense.index');
     }
 
     /**
