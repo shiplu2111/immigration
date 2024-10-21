@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\User;
+use App\Models\Group;
+use App\Models\Agent;
+use App\Models\SubAgent;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -24,7 +27,8 @@ class CandidateController extends Controller
     public function create()
     {
         $agents = User::whereIn('role', ['Agent', 'SubAgent', 'admin'])->get();
-        return view('admin.candidate.create')->with('agents', $agents);
+        $groups = Group::all();
+        return view('admin.candidate.create')->with('agents', $agents)->with('groups', $groups);
     }
 
     /**
@@ -32,11 +36,12 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
 
         $validate = $request->validate([
             'name' => 'required',
             'dob' => 'required',
-            'agent_id' => 'required',
+            'agent_user_id' => 'required',
             'country' => 'required',
             'marital_status' => 'required',
             'birth_place' => 'required',
@@ -46,11 +51,11 @@ class CandidateController extends Controller
             'village' => 'required',
             'thana' => 'required',
             'district' => 'required',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'email' => 'required|email',
             'emergency_contact_name' => 'required',
             'emergency_contact_relation' => 'required',
-            'emergency_contact_phone' => 'required|numeric',
+            'emergency_contact_phone' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
             'gender' => 'required',
@@ -61,6 +66,7 @@ class CandidateController extends Controller
         $candidate->dob = $request->dob;
         $candidate->country = $request->country;
         $candidate->gender = $request->gender;
+        $candidate->group_id = $request->group_id;
         $candidate->marital_status = $request->marital_status;
         $candidate->birth_place = $request->birth_place;
         $candidate->passport_number = $request->passport_number;
@@ -76,7 +82,8 @@ class CandidateController extends Controller
         $candidate->emergency_contact_phone = $request->emergency_contact_phone;
         $candidate->father_name = $request->father_name;
         $candidate->mother_name = $request->mother_name;
-        $candidate->agent_id = $request->agent_id;
+        $candidate->spouse_name = $request->spouse_name;
+        $candidate->agent_user_id = $request->agent_user_id;
         $candidate->create_by = Auth::user()->id;
         $candidate->save();
 if($candidate){
@@ -91,9 +98,25 @@ else{
     /**
      * Display the specified resource.
      */
-    public function show(Candidate $candidate)
+    public function show(Candidate $candidate ,$id)
     {
-        //
+        $candidate = Candidate::find($id);
+
+
+        $agent = User::find($candidate->agent_user_id);
+
+        // $agent = User::find($candidate->agent_id);
+        // return $agent;
+        $agent_data = Agent::where('user_id', $agent->id)->first();
+        if ($agent_data) {
+            $agent_data=$agent_data;
+        }
+        else {
+            $agent_data = SubAgent::where('user_id', $agent->id)->first();
+
+        }
+        // return $agent_data;
+        return view('admin.candidate.show')->with('candidate', $candidate)->with('agent', $agent)->with('agent_data', $agent_data);
     }
 
     /**

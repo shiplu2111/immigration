@@ -31,9 +31,10 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="../main/index.html" class="text-nowrap logo-img text-center d-block mb-5 w-100">
-                    Shiplujs
-                  {{-- <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" /> --}}
-                  {{-- <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" /> --}}
+
+                  <img style="height: 60px;" src="{{asset('/assets/images/logos/dark-logo.png')}}" class="dark-logo" alt="Logo-Dark" />
+                  {{-- <img style="height: 60px;" src="../assets/images/logos/dark-logo.png" class="dark-logo" alt="Logo-Dark" /> --}}
+                  <img style="height: 60px;" src="{{asset('/assets/images/logos/light-logo.png')}}" class="light-logo" alt="Logo-light" />
                 </a>
 
                 <div class="position-relative text-center my-4">

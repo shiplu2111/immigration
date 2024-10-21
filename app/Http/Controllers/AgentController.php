@@ -67,6 +67,18 @@ class AgentController extends Controller
             return redirect()->route('agents.create')->with('error', 'Something went wrong');
         }
     }
+public function searchAgents()
+{
+     // 'term' is the default parameter used by jQuery UI autocomplete
+
+    // Fetch agent names that match the search term
+        $agents = Agent::where('status', 'Active')->get();
+
+
+    // Return the results as an array for jQuery UI autocomplete
+
+    return response()->json($agents);
+}
 
     /**
      * Display the specified resource.

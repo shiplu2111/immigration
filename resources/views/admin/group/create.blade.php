@@ -13,7 +13,7 @@
                         @csrf
                     <div class="row">
 
-                      <div class="col-lg-6">
+                      <div class="col-lg-12">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Group Name</label>
                           <input type="text" name="group_name" class="form-control @error('group_name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
@@ -21,6 +21,20 @@
                           <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
                               Group Name is required and must be unique.
+                            </div>
+                      @enderror
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">Group Code</label>
+                          <input type="text" name="group_code" class="form-control @error('group_code') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+
+                          @error('group_code')
+                          <div class="d-flex align-items-center  me-3 me-md-0">
+                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
+                              Group Code is required and must be unique.
                             </div>
                       @enderror
                         </div>

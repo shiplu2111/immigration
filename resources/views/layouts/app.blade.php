@@ -14,9 +14,10 @@
   <link rel="stylesheet" href="{{ asset('/assets/css/styles.css') }}" />
   <link rel="stylesheet" href="{{ asset('/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-  <title>Modernize Bootstrap Admin</title>
+  <title>Saifan Dashboard</title>
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{{ asset('/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}"/>
+
 </head>
 
 <body>
@@ -404,6 +405,9 @@
   <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 
   <script src="{{ asset('/assets/js/datatable/datatable-advanced.init.js') }}"></script>
+  <script src="{{ asset('/assets/libs/typeahead.js/dist/typeahead.jquery.min.js') }}"></script>
+  <script src="{{ asset('/assets/libs/typeahead.js/dist/bloodhound.min.js') }}"></script>
+  <script src="{{ asset('/assets/js/forms/typeahead/typeahead.init.js') }}"></script>
 
 </body>
 

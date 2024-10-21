@@ -35,10 +35,10 @@ return new class extends Migration
             $table->string('father_name');
             $table->string('mother_name');
             $table->string('spouse_name')->nullable();
-            $table->tinyText('status')->default('New');
-            $table->unsignedBigInteger('agent_id')->nullable();
+            $table->string('status')->default('New');
+            $table->unsignedBigInteger('agent_user_id')->nullable();
             $table->unsignedBigInteger('create_by');
-            $table->foreign('agent_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('agent_user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

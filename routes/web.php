@@ -30,11 +30,13 @@ Route::middleware(['auth:sanctum', 'verified',config('jetstream.auth_session'),]
     Route::get('/candidates', [CandidateController::class, 'index'])->name('candidates');
     Route::get('/candidate/create', [CandidateController::class, 'create'])->name('candidate.create');
     Route::post('/candidate/create', [CandidateController::class, 'store'])->name('candidate.store');
+    Route::get('/candidate/show/{id}', [CandidateController::class, 'show'])->name('candidate.show');
 //++++++++++++++++++++++++++++++++ candidate end ++++++++++++++++++++++++++++++++++++++++++//
 //++++++++++++++++++++++++++++++++ agent start ++++++++++++++++++++++++++++++++++++++++++//
 Route::get('/agents', [AgentController::class, 'index'])->name('agents');
 Route::get('/agent/create', [AgentController::class, 'create'])->name('agents.create');
 Route::post('/agent/create', [AgentController::class, 'store'])->name('agent.store');
+Route::get('/agents/search', [AgentController::class, 'searchAgents'])->name('agents.search');
 //++++++++++++++++++++++++++++++++ agent end ++++++++++++++++++++++++++++++++++++++++++//
 
 //++++++++++++++++++++++++++++++++ Sub agent start ++++++++++++++++++++++++++++++++++++++++++//

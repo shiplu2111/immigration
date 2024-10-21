@@ -30,7 +30,7 @@ class Candidate extends Model
         'mother_name',
         'spouse_name',
         'gender',
-        'agent_id',
+        'agent_user_id',
         'create_by',
         'status',
     ];

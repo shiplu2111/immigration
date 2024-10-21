@@ -218,7 +218,7 @@
               <!-- ------------------------------- -->
               <!-- start notification Dropdown -->
               <!-- ------------------------------- -->
-              <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
+              {{-- <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
                 <a class="nav-link position-relative" href="javascript:void(0)" id="drop2" aria-expanded="false">
                   <i class="ti ti-bell-ringing"></i>
                   <div class="notification bg-primary rounded-circle"></div>
@@ -288,7 +288,7 @@
                     <button class="btn btn-outline-primary w-100">See All Notifications</button>
                   </div>
                 </div>
-              </li>
+              </li> --}}
               <!-- ------------------------------- -->
               <!-- end notification Dropdown -->
               <!-- ------------------------------- -->
@@ -300,7 +300,7 @@
                 <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
                   <div class="d-flex align-items-center">
                     <div class="user-profile-img">
-                      <img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="modernize-img" />
+                      <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="35" height="35" alt="modernize-img" />
                     </div>
                   </div>
                 </a>
@@ -310,7 +310,7 @@
                       <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                     </div>
                     <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                      <img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="80" height="80" alt="modernize-img" />
+                      <img src="{{ asset('assets/images/profile/user-1.jpg') }}" class="rounded-circle" width="80" height="80" alt="modernize-img" />
                       <div class="ms-3">
                         <h5 class="mb-1 fs-3">{{ Auth::user()->name }}</h5>
                         <span class="mb-1 d-block">{{ Auth::user()->name }}</span>
@@ -322,7 +322,7 @@
                     <div class="message-body">
                       <a href="../main/page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                          <img src="../assets/images/svgs/icon-account.svg" alt="modernize-img" width="24" height="24" />
+                          <img src="{{ asset('assets/images/svgs/icon-account.svg') }}" alt="modernize-img" width="24" height="24" />
                         </span>
                         <div class="w-100 ps-3">
                           <h6 class="mb-1 fs-3 fw-semibold lh-base">My Profile</h6>
@@ -331,7 +331,7 @@
                       </a>
                       <a href="../main/app-email.html" class="py-8 px-7 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                          <img src="../assets/images/svgs/icon-inbox.svg" alt="modernize-img" width="24" height="24" />
+                          <img src="{{ asset('assets/images/svgs/icon-inbox.svg') }}" alt="modernize-img" width="24" height="24" />
                         </span>
                         <div class="w-100 ps-3">
                           <h6 class="mb-1 fs-3 fw-semibold lh-base">My Inbox</h6>
@@ -340,7 +340,7 @@
                       </a>
                       <a href="../main/app-notes.html" class="py-8 px-7 d-flex align-items-center">
                         <span class="d-flex align-items-center justify-content-center text-bg-light rounded-1 p-6">
-                          <img src="../assets/images/svgs/icon-tasks.svg" alt="modernize-img" width="24" height="24" />
+                          <img src="{{ asset('assets/images/svgs/icon-tasks.svg') }}" alt="modernize-img" width="24" height="24" />
                         </span>
                         <div class="w-100 ps-3">
                           <h6 class="mb-1 fs-3 fw-semibold lh-base">My Task</h6>
@@ -592,7 +592,7 @@
               <!-- ------------------------------- -->
               <!-- start notification Dropdown -->
               <!-- ------------------------------- -->
-              <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
+              {{-- <li class="nav-item nav-icon-hover-bg rounded-circle dropdown">
                 <a class="nav-link position-relative" href="javascript:void(0)" id="drop2" aria-expanded="false">
                   <i class="ti ti-bell-ringing"></i>
                   <div class="notification bg-primary rounded-circle"></div>
@@ -618,7 +618,7 @@
                     <button class="btn btn-outline-primary w-100">See All Notifications</button>
                   </div>
                 </div>
-              </li>
+              </li> --}}
               <!-- ------------------------------- -->
               <!-- end notification Dropdown -->
               <!-- ------------------------------- -->

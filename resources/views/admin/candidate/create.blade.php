@@ -40,10 +40,17 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">Country to Apply</label>
-                          <select class="form-select" name="country" aria-label="Default select example" aria-label="Default select example">
-                            <x-country-list/>
-                          </select>
+                          <label for="exampleInputfirstname4" class="  form-label">Country to Apply</label>
+                          <div id="the-basics">
+                            <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                                <input style="display: none;" name="country" class="typeahead form-control tt-hint" type="text" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: padding-box;" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr">
+                                <input name="country" class="typeahead form-control tt-input" type="text" placeholder="Countries" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+                                <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Plus Jakarta Sans&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: optimizelegibility; text-transform: none;">b</pre>
+                                <div class="tt-menu tt-empty" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                                    <div class="tt-dataset tt-dataset-states"></div>
+                                </div>
+                            </span>
+                          </div>
                           @error('country')
                           <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -65,7 +72,7 @@
                       @enderror
                      </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Marital Status</label>
                           <select class="form-select" name="marital_status" aria-label="Default select example" aria-label="Default select example">
@@ -82,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label"> Gender</label>
                           <select name="gender" class="form-select @error('gender') is-invalid @enderror form-control" aria-label="Default select example">
@@ -94,7 +101,20 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label"> Group</label>
+                          <select name="group_id" class="form-select @error('group_id') is-invalid @enderror form-control" aria-label="Default select example">
+                        @foreach ($groups as $group)
+                        <option value="{{$group->id}}">{{$group->group_name}} -- ( {{$group->group_code}} ) </option>
+
+                        @endforeach
+
+                          </select>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Passport Number</label>
                           <input type="text" name="passport_number" class="form-control" id="exampleInputfirstname4" placeholder="Enter Passport Number">
@@ -169,7 +189,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Mobile No</label>
-                          <input type="text" name="phone" class="form-control" id="exampleInputfirstname4" placeholder="01712 356789"">
+                          <input type="tel" name="phone" class="form-control" id="exampleInputfirstname4" placeholder="01712 356789"">
                           @error('phone')
                           <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -218,7 +238,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Emergency Contact No</label>
-                          <input type="text" name="emergency_contact_phone" class="form-control" id="exampleInputfirstname4" placeholder="01712 356789">
+                          <input type="tel" name="emergency_contact_phone" class="form-control" id="exampleInputfirstname4" placeholder="01712 356789">
                           @error('emergency_contact_phone')
                           <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -261,9 +281,9 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label"> Agent or Sub Agent</label>
-                          <select name="agent_id" class="form-select @error('agent_id') is-invalid @enderror form-control" aria-label="Default select example">
+                          <select name="agent_user_id" class="form-select @error('agent_user_id') is-invalid @enderror form-control" aria-label="Default select example">
                             @foreach ($agents as $agent)
-                                <option value="{{$agent->id}}">{{$agent->name}}</option>
+                                <option value="{{$agent->id}}">{{$agent->name}} -{{$agent->role}}</option>
                             @endforeach
                             {{-- <option value="0">Agent</option> --}}
                           </select>

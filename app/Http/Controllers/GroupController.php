@@ -22,10 +22,11 @@ class GroupController extends Controller
     {
         $request->validate([
             'group_name' => 'required|unique:groups',
+            'group_code' => 'required|unique:groups',
         ]);
         $group = new Group();
         $group->group_name = $request->group_name;
-        $group->group_code = 'G-'.$request->group_name;
+        $group->group_code = $request->group_code;
         $group->status = $request->status;
         $group->created_by = auth()->user()->id;
         $group->save();
