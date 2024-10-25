@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('transportation');
             $table->string('yearly_vacation');
             $table->string('air_ticket');
+            $table->string('status');
             $table->unsignedBigInteger('create_by');
             $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 

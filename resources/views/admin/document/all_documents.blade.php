@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="mb-2">
-                            <h4 class="card-title mb-0">Candidate Expences</h4>
+                            <h4 class="card-title mb-0">Status</h4>
                           <a href="{{route('candidate.create')}}" class="btn btn-primary float-end" type="button" onclick="addData()">Add Candidate</a>
 
                           </div>
@@ -82,5 +82,4 @@
               </div>
         </div>
       </div>
-
    </x-app-layout>

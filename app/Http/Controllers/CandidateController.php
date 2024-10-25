@@ -6,7 +6,10 @@ use App\Models\Candidate;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Agent;
+use App\Models\Document;
 use App\Models\SubAgent;
+use App\Models\Clearance;
+use App\Models\ExpenseCandidate;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -101,12 +104,32 @@ else{
     public function show(Candidate $candidate ,$id)
     {
         $candidate = Candidate::find($id);
+        $documents = Document::where('candidate_id', $id)->first();
+        $clearance = Clearance::where('candidate_id', $id)->first();
+        $expense = ExpenseCandidate::where('candidate_id', $id)->first();
+        // return $expences;
+
+        if ($clearance) {
+            $clearance->bmet_clearance = json_decode($clearance->bmet_clearance, true);
+            $clearance->air_ticket = json_decode($clearance->air_ticket, true);
+        }
+        // return $clearance;
+        if ($documents) {
+            $documents->passport = json_decode($documents->passport, true);
+            $documents->passport_copy = json_decode($documents->passport_copy, true);
+            $documents->photo = json_decode($documents->photo, true);
+            $documents->police_clearance = json_decode($documents->police_clearance, true);
+            $documents->educational_certificate = json_decode($documents->educational_certificate, true);
+            $documents->technical_certificate = json_decode($documents->technical_certificate, true);
+            $documents->driving_licence = json_decode($documents->driving_licence, true);
+            $documents->national_id = json_decode($documents->national_id, true);
+        }
+
+        // return $documents;
 
 
         $agent = User::find($candidate->agent_user_id);
 
-        // $agent = User::find($candidate->agent_id);
-        // return $agent;
         $agent_data = Agent::where('user_id', $agent->id)->first();
         if ($agent_data) {
             $agent_data=$agent_data;
@@ -116,7 +139,14 @@ else{
 
         }
         // return $agent_data;
-        return view('admin.candidate.show')->with('candidate', $candidate)->with('agent', $agent)->with('agent_data', $agent_data);
+        return view('admin.candidate.show')
+        ->with('candidate', $candidate)
+        ->with('agent', $agent)
+        ->with('agent_data', $agent_data)
+        ->with('documents', $documents)
+        ->with('clearance', $clearance)
+        ->with('expense', $expense);
+
     }
 
     /**

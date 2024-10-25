@@ -63,31 +63,31 @@
                   </li>
 
 
-                  <li class="sidebar-item">
+                  {{-- <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('documents')}}" >
                       <span>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-files"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 3v4a1 1 0 0 0 1 1h4" /><path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" /><path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" /></svg>
                       </span>
                       <span class="hide-menu">Documents</span>
                     </a>
-                  </li>
+                  </li> --}}
 
-                  <li class="sidebar-item">
+                  <!-- <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('clearances')}}" >
                       <span>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-zoom-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3.072a8 8 0 0 1 2.617 11.424l4.944 4.943a1.5 1.5 0 0 1 -2.008 2.225l-.114 -.103l-4.943 -4.944a8 8 0 0 1 -12.49 -6.332l-.006 -.285l.005 -.285a8 8 0 0 1 11.995 -6.643zm-.293 4.22a1 1 0 0 0 -1.414 0l-3.293 3.294l-1.293 -1.293l-.094 -.083a1 1 0 0 0 -1.32 1.497l2 2l.094 .083a1 1 0 0 0 1.32 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
                       </span>
                       <span class="hide-menu">Clearance</span>
                     </a>
-                  </li>
-                  <li class="sidebar-item">
+                  </li> -->
+                  <!-- <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('candidates.expenses')}}" >
                       <span>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-currency-dollar-off"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4m-2.557 1.431a3 3 0 0 0 2.557 4.569h2m4.564 4.558a3 3 0 0 1 -2.564 1.442h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /><path d="M3 3l18 18" /></svg>
                       </span>
                       <span class="hide-menu">Expense</span>
                     </a>
-                  </li>
+                  </li> -->
             </ul>
           </li>
 
@@ -100,15 +100,22 @@
               <span class="hide-menu">Setting</span>
             </a>
             <ul aria-expanded="false" class="collapse first-level">
-
-                  {{-- <li class="sidebar-item">
-                    <a class="sidebar-link"  href="{{route('countrys')}}" >
+            <li class="sidebar-item">
+                    <a class="sidebar-link"  href="{{route('companies')}}" >
                       <span>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
                       </span>
-                      <span class="hide-menu">Country</span>
+                      <span class="hide-menu">Company Info</span>
                     </a>
-                  </li> --}}
+                  </li>
+                   <li class="sidebar-item">
+                    <a class="sidebar-link"  href="{{route('settings')}}" >
+                      <span>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
+                      </span>
+                      <span class="hide-menu">Web Settings</span>
+                    </a>
+                  </li>
                   <li class="sidebar-item">
                     <a class="sidebar-link" href="{{route('groups')}}" >
                       <span>

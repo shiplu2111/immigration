@@ -12,6 +12,8 @@ use App\Http\Controllers\ExpenseCandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\SubAgentController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CompanyInfoController;
 
 
 
@@ -44,11 +46,42 @@ Route::get('/sub-agents', [SubAgentController::class, 'index'])->name('sub.agent
 Route::get('/sub-agent/create', [SubAgentController::class, 'create'])->name('sub.agents.create');
 Route::post('/sub-agent/create', [SubAgentController::class, 'store'])->name('sub.agent.store');
 //++++++++++++++++++++++++++++++++ agent end ++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++ document start ++++++++++++++++++++++++++++++++++++++++++//
 
     Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
-    Route::get('/status', [StatusController::class, 'index'])->name('status');
+    // Route::get('/document/create', [DocumentController::class, 'create'])->name('documents.create');
+    Route::post('/document/create', [DocumentController::class, 'store'])->name('document.store');
+    Route::get('/document/{id}/show', [DocumentController::class, 'details'])->name('document.details');
+    Route::post('/document/delete/', [DocumentController::class, 'destroy'])->name('document.delete');
+    Route::post('/document/download/', [DocumentController::class, 'download'])->name('document.download');
+//++++++++++++++++++++++++++++++++ document end ++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++ Status start ++++++++++++++++++++++++++++++++++++++++++//
+Route::get('/status', [StatusController::class, 'index'])->name('status');
+//++++++++++++++++++++++++++++++++ Status end  ++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++ Clearance start  ++++++++++++++++++++++++++++++++++++++++++//
+
     Route::get('/clearances', [ClearanceController::class, 'index'])->name('clearances');
+    Route::post('/clearances/create', [ClearanceController::class, 'store'])->name('clearance.store');
+    Route::post('/clearance/delete/', [ClearanceController::class, 'destroy'])->name('clearance.delete');
+//++++++++++++++++++++++++++++++++ Clearance end  ++++++++++++++++++++++++++++++++++++++++++//
+
+//++++++++++++++++++++++++++++++++ Candidate Expense start  ++++++++++++++++++++++++++++++++++++++++++//
     Route::get('/candidates-expenses', [ExpenseCandidateController::class, 'index'])->name('candidates.expenses');
+    Route::post('/candidates-expenses/create', [ExpenseCandidateController::class, 'store'])->name('candidate.expense.store');
+//++++++++++++++++++++++++++++++++ Candidate Expense end  ++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++ settings start  ++++++++++++++++++++++++++++++++++++++++++//
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings');
+//++++++++++++++++++++++++++++++++ settings end  ++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++ settings start  ++++++++++++++++++++++++++++++++++++++++++//
+Route::get('/companies', [CompanyInfoController::class, 'index'])->name('companies');
+Route::get('/company/create', [CompanyInfoController::class, 'create'])->name('company.create');
+Route::post('/company/create', [CompanyInfoController::class, 'store'])->name('company.store');
+Route::get('/company/{id}/details', [CompanyInfoController::class, 'show'])->name('company.show');
+Route::get('/company/{id}/edit', [CompanyInfoController::class, 'edit'])->name('company.edit');
+Route::post('/company/{id}/update', [CompanyInfoController::class, 'update'])->name('company.update');
+
+
+//++++++++++++++++++++++++++++++++ settings end  ++++++++++++++++++++++++++++++++++++++++++//
 });
 
 

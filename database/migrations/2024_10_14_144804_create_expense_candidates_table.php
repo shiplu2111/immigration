@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('expense_candidates', function (Blueprint $table) {
             $table->id();
-            $table->double('air_ticket')->nullable();
-            $table->double('translation')->nullable();
-            $table->double('mofa_attest')->nullable();
-            $table->double('notary_attest')->nullable();
-            $table->double('transportation')->nullable();
-            $table->double('photocopy')->nullable();
-            $table->double('bmet_clearance')->nullable();
-            $table->double('visa_cost')->nullable();
-            $table->double('embassy_fee')->nullable();
-            $table->double('embassy_apointment_fee')->nullable();
-            $table->double('agent_commission')->nullable();
-            $table->double('other_expenses')->nullable();
+            $table->float('air_ticket')->nullable();
+            $table->float('translation')->nullable();
+            $table->float('mofa_attest')->nullable();
+            $table->float('notary_attest')->nullable();
+            $table->float('transportation')->nullable();
+            $table->float('photocopy')->nullable();
+            $table->float('bmet_clearance')->nullable();
+            $table->float('visa_cost')->nullable();
+            $table->float('embassy_fee')->nullable();
+            $table->float('embassy_apointment_fee')->nullable();
+            $table->float('agent_commission')->nullable();
+            $table->float('other_expenses')->nullable();
             $table->unsignedBigInteger('candidate_id');
             $table->unsignedBigInteger('create_by');
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');

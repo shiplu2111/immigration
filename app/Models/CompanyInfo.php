@@ -28,6 +28,7 @@ class CompanyInfo extends Model
         'transportation',
         'yearly_vacation',
         'air_ticket',
+        'status',
         'create_by',
     ];
 }
