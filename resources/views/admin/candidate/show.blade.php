@@ -54,6 +54,9 @@
                 </ul>
               </div>
             </div>
+
+
+
             <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-primary-subtle rounded-2 rounded-top-0" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link active hstack gap-2 rounded-0 py-6" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">
@@ -86,10 +89,16 @@
                   <span class="d-none d-md-block">Expense</span>
                 </button>
               </li>
-
+              <li class="nav-item" role="presentation">
+                <button class="nav-link hstack gap-2 rounded-0 py-6" id="status-tab" data-bs-toggle="pill" data-bs-target="#status" type="button" role="tab" aria-controls="status" aria-selected="false">
+                  <i class="ti ti-user-circle fs-5"></i>
+                  <span class="d-none d-md-block">Status</span>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
+
         <div class="tab-content" id="pills-tabContent">
           @include('admin.candidate.components.profile')
           {{-- Agent tab start here --}}
@@ -106,8 +115,12 @@
          @include('admin.candidate.components.clearance')
           {{-- clearance tab end here  --}}
           {{-- expense tab start here  --}}
-@include('admin.candidate.components.expense')
-          {{-- expense tab start here  --}}
+        @include('admin.candidate.components.expense')
+        {{-- expense tab start here  --}}
+        {{-- status tab start here  --}}
+        @include('admin.candidate.components.status')
+        {{-- status tab start here  --}}
+
 
 
         </div>

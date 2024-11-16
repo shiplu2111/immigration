@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('dob');
             $table->string('country');
             $table->tinyText('gender');
+            $table->integer('total_cost');
             $table->tinyText('marital_status');
             $table->string('birth_place');
             $table->string('passport_number');

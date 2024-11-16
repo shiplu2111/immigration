@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table-> string('name')->nullable();
-            $table-> double('amount')->nullable();
-            $table-> tinyText('status')->nullable();
+            $table-> string('payment_type')->nullable();
+            $table-> double('payment_amount')->nullable();
+            $table-> unsignedBigInteger('group_id')->nullable();
+            $table-> unsignedBigInteger('individual_id')->nullable();
+            $table-> unsignedBigInteger('agent_id')->nullable();
+            $table-> double('total_amount')->nullable();
+            $table-> double('due_amount')->nullable();
             $table->unsignedBigInteger('create_by');
-            $table->unsignedBigInteger('candidate_id')->nullable();
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('agent_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('individual_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

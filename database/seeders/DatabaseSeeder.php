@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Shiplu',
-            'email' => 'me@shiplujs.com',
+            'email' => 'admin@softstation71.com',
             'password' => Hash::make('123456789'),
             'email_verified_at' => now(),
             'role' => 'admin',

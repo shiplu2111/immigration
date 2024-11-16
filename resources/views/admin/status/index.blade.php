@@ -12,74 +12,65 @@
                     <div class="card-header">
                         <div class="mb-2">
                             <h4 class="card-title mb-0">Status</h4>
-                          <a href="{{route('candidate.create')}}" class="btn btn-primary float-end" type="button" onclick="addData()">Add Candidate</a>
+                          <a href="{{route('status.create')}}" class="btn btn-primary float-end" type="button" onclick="addData()">Add Status</a>
 
                           </div>
                     </div>
                   <div class="card-body">
 
-                    <div class="table-responsive">
-                      <table id="file_export" class="table w-100 table-striped table-bordered display text-nowrap">
-                        <thead>
-                          <!-- start row -->
-                          <tr>
-                            <th>Name</th>
-                            <th>Birthday</th>
-                            <th>Email</th>
-                            <th>Mobile No</th>
-                            <th>Passport No</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
-                          <!-- end row -->
-                        </thead>
-                        <tbody>
-                          <!-- start row -->
+                  <ul id="sortable-list">
+    @foreach ($statuses as $status)
+        <li class="sortable-item" data-id="{{ $status->id }}">
+            <div class="card p-4">
+                <div class="d-flex align-items-center  justify-content-between">
+                    <span  class="d-flex align-items-center gap-2">
 
+                        {{ $status->status_name }}
+                    </span>
+                    <span class="d-flex align-items-center gap-2">
+                        <div>
+                        <span class="mb-1 badge text-bg-secondary">{{ $status->status }}</span>
 
+                        </div>
+                        <div>
+                            <a href="{{ route('status.status_update', $status->id) }}" class="btn btn-primary btn-sm">Update Status</a>
+                        </div>
+                    </span>
 
-                          <tr>
-                            <td> name</td>
-                            <td>dob</td>
-                            <td>email</td>
-                            <td>phone</td>
-                            <td>passport_number</td>
-                            <td  class="text-center">
-                               status</td>
-                            <td  class="text-center">
-                                <a href="#">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Edit" class="text-primary" width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
-                            </a>
-                            <a href="#">
-                                <svg  xmlns="http://www.w3.org/2000/svg" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="View Details" class="text-info" width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" /></svg> </a>
-                        </td>
-
-                          </tr>
-
-                          <!-- end row -->
-                          <!-- start row -->
-
-                          <!-- end row -->
-                        </tbody>
-                        <tfoot>
-                          <!-- start row -->
-                          <tr>
-                            <th>Name</th>
-                            <th>Birthday</th>
-                            <th>Email</th>
-                            <th>Mobile No</th>
-                            <th>Passport No</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
-                          <!-- end row -->
-                        </tfoot>
-                      </table>
-                    </div>
+            </div>
+        </li>
+    @endforeach
+</ul>
                   </div>
                 </div>
                 <!-- end File export -->
               </div>
         </div>
       </div>
+      <script>
+    const sortableList = document.getElementById('sortable-list');
+    Sortable.create(sortableList, {
+        animation: 150,
+        onEnd: function () {
+            // Get the new order of item IDs after drag-and-drop
+            const orderedIds = Array.from(sortableList.children).map(item => item.dataset.id);
+
+            // Send the new order to the backend
+            fetch("{{ route('statuses.update-order') }}", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ order: orderedIds })
+            }).then(response => {
+                if (response.ok) {
+                    // alert("Order updated successfully!");
+                } else {
+                    // alert("Failed to update order.");
+                }
+            });
+        }
+    });
+</script>
    </x-app-layout>

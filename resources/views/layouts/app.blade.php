@@ -14,10 +14,11 @@
   <link rel="stylesheet" href="{{ asset('/assets/css/styles.css') }}" />
   <link rel="stylesheet" href="{{ asset('/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="{{ asset('/assets/libs/select2/dist/css/select2.min.css') }}">
   <title>Saifan Dashboard</title>
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{{ asset('/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css') }}"/>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,30 @@
 
   <div id="main-wrapper">
     <!-- Sidebar Start -->
-
+    @if(session('success'))
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ session('success') }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+@endif
+@if(session('error'))
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+    <div id="errorToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ session('error') }}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+@endif
         <x-adminSidebar />
 
 
@@ -54,9 +78,9 @@
     document.documentElement.setAttribute("data-color-theme", e);
   }
 </script>
-      <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <!-- <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <i class="icon ti ti-settings fs-7"></i>
-      </button>
+      </button> -->
 
       <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
@@ -384,7 +408,25 @@
       </div>
     </div>
   </div>
-  <div class="dark-transparent sidebartoggler"></div>
+  <!-- <div class="dark-transparent sidebartoggler"></div> -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Show success toast if present
+        var successToast = document.getElementById('successToast');
+        if (successToast) {
+            var toast = new bootstrap.Toast(successToast);
+            toast.show();
+        }
+
+        // Show error toast if present
+        var errorToast = document.getElementById('errorToast');
+        if (errorToast) {
+            var toast = new bootstrap.Toast(errorToast);
+            toast.show();
+        }
+    });
+</script>
   <script src="{{ asset('/assets/js/vendor.min.js') }}"></script>
   <!-- Import Js Files -->
   <script src="{{ asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -408,6 +450,11 @@
   <script src="{{ asset('/assets/libs/typeahead.js/dist/typeahead.jquery.min.js') }}"></script>
   <script src="{{ asset('/assets/libs/typeahead.js/dist/bloodhound.min.js') }}"></script>
   <script src="{{ asset('/assets/js/forms/typeahead/typeahead.init.js') }}"></script>
+  <script src="{{ asset('/assets/libs/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/select2/dist/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/forms/select2.init.js') }}"></script>
+    <script src="{{ asset('/assets/js/apps/invoice.js') }}"></script>
+    <script src="{{ asset('/assets/js/apps/jquery.PrintArea.js') }}"></script>
 
 </body>
 

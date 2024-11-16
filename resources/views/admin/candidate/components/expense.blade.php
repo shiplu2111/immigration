@@ -231,7 +231,7 @@
             <div class="mb-3">
                 {{-- <label class="form-label">Input Clearance</label> --}}
                 <select class="form-select" name="expense_type" id="inlineFormCustomSelect">
-                  <option selected="">Choose clearance</option>
+                  <option selected="">Choose Expense Type</option>
                   <option value="air_ticket">Air ticket</option>
                   <option value="translation">Translation</option>
                   <option value="mofa_attest">MOFA attest</option>

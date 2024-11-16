@@ -17,6 +17,7 @@ class AgentController extends Controller
     {
         // $agents= User::with('agentInfo')->get();
         $agents = Agent::with('user')->get();
+        // return $agents;
 
         // return $agents;
         // $agents = Agent::orderBy('id', 'desc')->get();

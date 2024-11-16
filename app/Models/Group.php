@@ -14,5 +14,6 @@ class Group extends Model
         'status',
         'editable',
         'created_by',
+        'total_cost',
     ];
 }

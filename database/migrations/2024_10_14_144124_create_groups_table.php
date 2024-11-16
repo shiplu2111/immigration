@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('group_code')->nullable();
             $table->tinyText('status')->nullable();
             $table->tinyInteger('editable')->default(1);
+            $table->integer('total_cost')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

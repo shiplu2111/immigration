@@ -41,6 +41,16 @@
                       <tr>
                         <td style="border-right: .5px solid #dee2e6">
                           <p class="mb-0 fw-normal fs-4">
+                              <b>Total Cost:</b></p>
+                        </td>
+                        <td>
+                          <p class="mb-0 fw-normal fs-4"><b>{{$candidate->total_cost}}</b></p>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style="border-right: .5px solid #dee2e6">
+                          <p class="mb-0 fw-normal fs-4">
                               <b>Date Of Birth:</b></p>
                         </td>
                         <td>

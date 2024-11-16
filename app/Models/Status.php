@@ -9,8 +9,13 @@ class Status extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'candidate_id',
-        'current_status',
+        'status_name',
+        'serial',
+        'status',
         'create_by',
+    ];
+    public $sortable = [
+        'order_column_name' => 'serial',
+        'sort_when_creating' => true,
     ];
 }

@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class CandidateStatus extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'payment_type',
-        'payment_amount',
-        'group_id',
-        'individual_id',
-        'agent_id',
-        'total_amount',
-        'due_amount',
+        'candidate_id',
+        'status_name',
+        'status',
         'create_by',
     ];
-}
 
+}

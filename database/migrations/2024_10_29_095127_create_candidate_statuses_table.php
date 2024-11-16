@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('office_expenses', function (Blueprint $table) {
+        Schema::create('candidate_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('expense_type')->nullable();
-            $table->string('expense_name')->nullable();
-            $table->string('image')->nullable();
-            $table->double('amount')->nullable();
-            $table->longText('expense_description')->nullable();
-            $table->date('date')->nullable();
+            $table->unsignedBigInteger('candidate_id');
+            $table->string('status_name');
+            $table->string('status');
             $table->unsignedBigInteger('create_by');
             $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,8 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('office_expenses');
+        Schema::dropIfExists('candidate_statuses');
     }
 };
-
-

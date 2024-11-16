@@ -13,15 +13,10 @@ return new class extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('document_received')->nullable();
-            $table->tinyText('submitted_for_work_permit')->nullable();
-            $table->tinyText('work_permit_received')->nullable();
-            $table->tinyText('submitted_for_visa')->nullable();
-            $table->tinyText('visa_received')->nullable();
-            $table->tinyText('migrated')->nullable();
+            $table->string('status_name');
+            $table->integer('serial');
+            $table->tinyText('status');
             $table->unsignedBigInteger('create_by');
-            $table->unsignedBigInteger('candidate_id');
-            $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('create_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

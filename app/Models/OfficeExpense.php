@@ -9,20 +9,29 @@ class OfficeExpense extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'rent',
-        'service_charge',
-        'electricity_bill',
-        'gas_bill',
-        'gasoline_bill',
-        'stationary_bill',
-        'food_bill',
-        'non_food_bill',
-        'cleaning_bill',
-        'transport_bill',
-        'salary',
-        'bonus',
-        'special_allowance',
-        'others',
+        'expense_type',
+        'amount',
+        'expense_description',
+        'expense_name',
+        'image',
+        'date',
         'create_by',
     ];
+    // protected $fillable = [
+    //     'rent',
+    //     'service_charge',
+    //     'electricity_bill',
+    //     'gas_bill',
+    //     'gasoline_bill',
+    //     'stationary_bill',
+    //     'food_bill',
+    //     'non_food_bill',
+    //     'cleaning_bill',
+    //     'transport_bill',
+    //     'salary',
+    //     'bonus',
+    //     'special_allowance',
+    //     'others',
+    //     'create_by',
+    // ];
 }

@@ -12,6 +12,7 @@ class Candidate extends Model
         'name',
         'group_id',
         'country',
+        'total_cost',
         'dob',
         'marital_status',
         'birth_place',

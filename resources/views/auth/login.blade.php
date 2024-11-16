@@ -15,7 +15,7 @@
   <!-- Core Css -->
   <link rel="stylesheet" href="../assets/css/styles.css" />
 
-  <title>Shiplujs Login</title>
+  <title>Saifan Login</title>
 </head>
 
 <body>

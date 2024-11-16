@@ -25,6 +25,8 @@
                           <tr>
                             <th>Group Name</th>
                             <th>Group Code</th>
+                            <th>Total Candidates</th>
+                            <th>Total Cost</th>
 
                             <th>Status</th>
                             <th>Action</th>
@@ -35,12 +37,17 @@
                           <!-- start row -->
 
 
-@foreach ($groups as $group)
+                            @foreach ($groups as $group)
+                            @php
+                                $group_member=DB::table('candidates')->where('group_id',$group->id)->count();
+                            @endphp
 
 
                           <tr>
                             <td>{{$group->group_name}}</td>
                             <td>{{$group->group_code}}</td>
+                            <td>{{$group_member}}</td>
+                            <td>{{ number_format($group->total_cost, 0, '.', ',') }}/=</td>
                             <td  class="text-center">
                                 {{$group->status}}</td>
                             <td  class="text-center">
@@ -72,6 +79,9 @@
                           <tr>
                             <th>Name</th>
                             <th>Group Code</th>
+                            <th>Total Candidates</th>
+
+                            <th>Total Cost</th>
 
                             <th>Status</th>
                             <th>Action</th>

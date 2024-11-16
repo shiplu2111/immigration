@@ -3,7 +3,7 @@
       <!-- Start Vertical Layout Sidebar -->
       <!-- ---------------------------------- -->
       <div class="brand-logo d-flex align-items-center justify-content-between">
-        <a href="../main/index.html" class="text-nowrap logo-img">
+        <a href="{{route('admin.dashboard')}}" class="text-nowrap logo-img">
           <img style="height: 60px" src="{{asset('/assets/images/logos/dark-logo.png')}}" class="dark-logo" alt="Logo-Dark" />
           <img style="height: 60px" src="{{asset('/assets/images/logos/light-logo.png')}}" class="light-logo" alt="Logo-light" />
         </a>
@@ -92,28 +92,19 @@
           </li>
 
 
+
+
+
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Office</span>
+          </li>
           <li class="sidebar-item">
-            <a class="sidebar-link has-arrow" href="javascript:void()" aria-expanded="false">
-              <span class="d-flex">
-                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
-              </span>
-              <span class="hide-menu">Setting</span>
-            </a>
-            <ul aria-expanded="false" class="collapse first-level">
-            <li class="sidebar-item">
                     <a class="sidebar-link"  href="{{route('companies')}}" >
                       <span>
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
                       </span>
                       <span class="hide-menu">Company Info</span>
-                    </a>
-                  </li>
-                   <li class="sidebar-item">
-                    <a class="sidebar-link"  href="{{route('settings')}}" >
-                      <span>
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
-                      </span>
-                      <span class="hide-menu">Web Settings</span>
                     </a>
                   </li>
                   <li class="sidebar-item">
@@ -124,47 +115,7 @@
                       <span class="hide-menu">Groups</span>
                     </a>
                   </li>
-
-                  <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{route('status')}}" >
-                      <span>
-                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-arrows-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 21v-14" /><path d="M9 15l3 -3l3 3" /><path d="M15 10l3 -3l3 3" /><path d="M3 21l18 0" /><path d="M12 21l0 -9" /><path d="M3 6l3 -3l3 3" /><path d="M6 21v-18" /></svg>
-                      </span>
-                      <span class="hide-menu">Status</span>
-                    </a>
-                  </li>
-
-
-            </ul>
-          </li>
-
-
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">Office</span>
-          </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="../main/app-calendar.html" aria-expanded="false">
-              <span>
-                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-info-octagon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.897 1a4 4 0 0 1 2.664 1.016l.165 .156l4.1 4.1a4 4 0 0 1 1.168 2.605l.006 .227v5.794a4 4 0 0 1 -1.016 2.664l-.156 .165l-4.1 4.1a4 4 0 0 1 -2.603 1.168l-.227 .006h-5.795a3.999 3.999 0 0 1 -2.664 -1.017l-.165 -.156l-4.1 -4.1a4 4 0 0 1 -1.168 -2.604l-.006 -.227v-5.794a4 4 0 0 1 1.016 -2.664l.156 -.165l4.1 -4.1a4 4 0 0 1 2.605 -1.168l.227 -.006h5.793zm-2.897 10h-1l-.117 .007a1 1 0 0 0 0 1.986l.117 .007v3l.007 .117a1 1 0 0 0 .876 .876l.117 .007h1l.117 -.007a1 1 0 0 0 .876 -.876l.007 -.117l-.007 -.117a1 1 0 0 0 -.764 -.857l-.112 -.02l-.117 -.006v-3l-.007 -.117a1 1 0 0 0 -.876 -.876l-.117 -.007zm.01 -3l-.127 .007a1 1 0 0 0 0 1.986l.117 .007l.127 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z" /></svg>
-              </span>
-              <span class="hide-menu">Company Info</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="../main/app-calendar.html" aria-expanded="false">
-              <span>
-                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-math-x-minus-y"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 9l6 6" /><path d="M2 15l6 -6" /><path d="M16 9l3 5.063" /><path d="M22 9l-4.8 9" /><path d="M10 12h4" /></svg>
-              </span>
-              <span class="hide-menu">Office Expense</span>
-            </a>
-          </li>
-        </li>
-        <li class="nav-small-cap">
-          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-          <span class="hide-menu">Agent</span>
-        </li>
-        <li class="sidebar-item">
           <a class="sidebar-link" href="{{route('agents')}}" aria-expanded="false">
             <span>
                 <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user-bolt"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4c.267 0 .529 .026 .781 .076" /><path d="M19 16l-2 3h4l-2 3" /></svg>
@@ -180,6 +131,121 @@
               <span class="hide-menu">Sub Agents Info</span>
             </a>
           </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{route('expenses')}}" aria-expanded="false">
+              <span>
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-math-x-minus-y"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 9l6 6" /><path d="M2 15l6 -6" /><path d="M16 9l3 5.063" /><path d="M22 9l-4.8 9" /><path d="M10 12h4" /></svg>
+              </span>
+              <span class="hide-menu">Office Expense</span>
+            </a>
+          </li>
+          <!-- <li class="sidebar-item">
+            <a class="sidebar-link" href="{{route('payments')}}" aria-expanded="false">
+              <span>
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-math-x-minus-y"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M2 9l6 6" /><path d="M2 15l6 -6" /><path d="M16 9l3 5.063" /><path d="M22 9l-4.8 9" /><path d="M10 12h4" /></svg>
+              </span>
+              <span class="hide-menu">Payments</span>
+            </a>
+          </li> -->
+          <li class="sidebar-item">
+              <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                <span class="d-flex">
+                  <i class="ti ti-box-multiple"></i>
+                </span>
+                <span class="hide-menu">Payments</span>
+              </a>
+              <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                  <a href="{{route('payments')}}" class="sidebar-link">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">All Payments</span>
+                  </a>
+                </li>
+                <li class="sidebar-item">
+                  <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Add Payments</span>
+                  </a>
+                  <ul aria-expanded="false" class="collapse two-level">
+                    <li class="sidebar-item">
+                      <a href="{{route('payment.group')}}" class="sidebar-link">
+                        <div class="round-16 d-flex align-items-center justify-content-center">
+                          <i class="ti ti-circle"></i>
+                        </div>
+                        <span class="hide-menu">Group Payment</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-item">
+                      <a href="{{route('payment.individual')}}" class="sidebar-link">
+                        <div class="round-16 d-flex align-items-center justify-content-center">
+                          <i class="ti ti-circle"></i>
+                        </div>
+                        <span class="hide-menu">Individual Payment</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+              </ul>
+            </li>
+        </li>
+        <li class="nav-small-cap">
+          <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+          <span class="hide-menu">Settings</span>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link has-arrow" href="javascript:void()" aria-expanded="false">
+              <span class="d-flex">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
+              </span>
+              <span class="hide-menu">Setting</span>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+
+                    <li class="sidebar-item">
+                    <a class="sidebar-link"  href="{{route('reports.individual')}}" >
+                      <span>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
+                      </span>
+                      <span class="hide-menu">Individual Report </span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link"  href="{{route('reports.group')}}" >
+                      <span>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
+                      </span>
+                      <span class="hide-menu">Gropu Report </span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link"  href="{{route('reports.transection')}}" >
+                      <span>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
+                      </span>
+                      <span class="hide-menu">Transaction Report</span>
+                    </a>
+                  </li>
+
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('status')}}" >
+                      <span>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chart-arrows-vertical"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 21v-14" /><path d="M9 15l3 -3l3 3" /><path d="M15 10l3 -3l3 3" /><path d="M3 21l18 0" /><path d="M12 21l0 -9" /><path d="M3 6l3 -3l3 3" /><path d="M6 21v-18" /></svg>
+                      </span>
+                      <span class="hide-menu">Status</span>
+                    </a>
+                  </li>
+
+
+            </ul>
+          </li>
+
         </ul>
       </nav>
       <form method="POST" action="{{ route('logout') }}" x-data>
