@@ -4,6 +4,11 @@
             {{ __('Update Candidate') }}
         </h2>
     </x-slot>
+    <style>
+        .hidden {
+    display: none;
+}
+    </style>
 
     <div class="container-fluid">
         <div class="row">
@@ -39,7 +44,7 @@
                             @enderror
                             </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="exampleInputfirstname4" class="  form-label">Country to Apply</label>
                                 <div id="the-basics" >
@@ -60,7 +65,20 @@
                             @enderror
                             </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="job_title" class="form-label">Job Title</label>
+                          <input type="text" name="job_title" class="form-control" id="job_title" placeholder="Enter job title" value="{{ old('job_title', $candidate->job_title) }}">
+
+                          @error('job_title')
+                          <div class="d-flex align-items-center  me-3 me-md-0">
+                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
+                              Required
+                            </div>
+                      @enderror
+                     </div>
+                    </div>
+                            <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="exampleInputfirstname4" class="form-label">Birth Place</label>
                                 <input type="text" value="{{ old('birth_place', $candidate->birth_place) }}" name="birth_place" class="form-control" id="exampleInputfirstname4" placeholder="Enter Birth Place">
@@ -73,7 +91,7 @@
                             @enderror
                             </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="total_cost"class="form-label">Total Cost</label>
                                 <input type="number" value="{{ old('total_cost', $candidate->total_cost)}}"  name="total_cost" class="form-control" id="total_cost" placeholder="Enter total total_cost" required>
@@ -164,6 +182,46 @@
                             </div>
                             </div>
                             <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="division" class="form-label">Division</label>
+                          <select class="form-select select2" name="division" id="divisions" onchange="divisionsList(); ">
+                                <option value="Barishal" {{ (old('division', $candidate->division) == 'Barishal') ? 'selected' : '' }}>Barishal</option>
+                                <option value="Chattogram" {{ (old('division', $candidate->division) == 'Chattogram') ? 'selected' : '' }}>Chattogram</option>
+                                <option value="Dhaka" {{ (old('division', $candidate->division) == 'Dhaka') ? 'selected' : '' }}>Dhaka</option>
+                                <option value="Khulna" {{ (old('division', $candidate->division) == 'Khulna') ? 'selected' : '' }}>Khulna</option>
+                                <option value="Mymensingh" {{ (old('division', $candidate->division) == 'Mymensingh') ? 'selected' : '' }}>Mymensingh</option>
+                                <option value="Rajshahi" {{ (old('division', $candidate->division) == 'Rajshahi') ? 'selected' : '' }}>Rajshahi</option>
+                                <option value="Rangpur" {{ (old('division', $candidate->division) == 'Rangpur') ? 'selected' : '' }}>Rangpur</option>
+                                <option value="Sylhet" {{ (old('division', $candidate->division) == 'Sylhet') ? 'selected' : '' }}>Sylhet</option>
+                            </select>
+
+                     </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">District - {{ old('district', $candidate->district) }}</label>
+
+
+                          <select name="district"  class=" select2 form-select @error('district') is-invalid @enderror form-control" id="distr" onchange="thanaList();" required
+                          value="{{ old('district', $candidate->district) }}" >
+
+                            <option value="{{ old('district', $candidate->district) }}" >{{ old('district', $candidate->district) }}</option>
+
+                        </select>
+                     </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">Police Station</label>
+                          <select name="thana" class=" select2 form-select @error('thana') is-invalid @enderror form-control" id="polic_sta" required value="{{ old('thana', $candidate->thana) }}">
+                          <option value="{{ old('thana', $candidate->thana) }}" >{{ old('thana', $candidate->thana) }}</option>
+                          </select>
+
+
+                      </div>
+                    </div>
+                            <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="exampleInputfirstname4" class="form-label">Village</label>
                                 <input type="text" value="{{ old('village', $candidate->village) }}"  name="village" class="form-control" id="exampleInputfirstname4" placeholder="Enter Village">
@@ -175,30 +233,7 @@
                             @enderror
                             </div>
                             </div>
-                            <div class="col-lg-6">
-                            <div class="mb-4">
-                                <label for="exampleInputfirstname4" class="form-label">Thana</label>
-                                <input type="text"  value="{{ old('thana', $candidate->thana) }}" name="thana" class="form-control" id="exampleInputfirstname4" placeholder="Enter Thana">
-                                @error('thana')
-                                <div class="d-flex align-items-center  me-3 me-md-0">
-                                    <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                                    Required
-                                </div>
-                            @enderror
-                            </div>
-                            </div>
-                            <div class="col-lg-6">
-                            <div class="mb-4">
-                                <label for="exampleInputfirstname4" class="form-label">District</label>
-                                <input type="text"  value="{{ old('district', $candidate->district) }}" name="district" class="form-control" id="exampleInputfirstname4" placeholder="Enter District">
-                                @error('district')
-                                <div class="d-flex align-items-center  me-3 me-md-0">
-                                    <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                                    Required
-                                </div>
-                            @enderror
-                            </div>
-                            </div>
+
                             <div class="col-lg-6">
                             <div class="mb-4">
                                 <label for="exampleInputfirstname4" class="form-label">Mobile No</label>
@@ -315,4 +350,12 @@
             </div>
         </div>
     </div>
+    <script>
+        function  statusChange() {
+            var district = document.getElementById("distr");
+            var priv_district = document.getElementById("priv_district");
+            var district = document.getElementById("distr");
+            priv_district.style.display = "none";
+        }
+    </script>
 </x-app-layout>

@@ -20,12 +20,14 @@ return new class extends Migration
             $table->string('country');
             $table->tinyText('gender');
             $table->integer('total_cost');
+            $table->string('job_title');
             $table->tinyText('marital_status');
             $table->string('birth_place');
             $table->string('passport_number');
             $table->date('passport_issue_date');
             $table->date('passport_expiry_date');
             $table->string('village');
+            $table->string('division');
             $table->string('thana');
             $table->string('district');
             $table->string('phone');

@@ -49,7 +49,7 @@ class ClearanceController extends Controller
             $imageUrls = [];
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
-                    $path = $image->store('uploads/'.$candidate->name.'-'.$candidate->email.'/'.$clearance_type, 'public');
+                    $path = $image->store('uploads/'.$candidate->name, 'public');
                     $imageUrls[] = '/storage/' . $path;
                 }
             }
@@ -65,8 +65,7 @@ class ClearanceController extends Controller
 
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
-                    $path = $image->store('uploads/'.$candidate->name.'-'.$candidate->email.'/'.$clearance_type, 'public');
-
+                    $path = $image->store('uploads/'.$candidate->name, 'public');
                     $imageUrls[] = '/storage/' . $path;
                 }
             }

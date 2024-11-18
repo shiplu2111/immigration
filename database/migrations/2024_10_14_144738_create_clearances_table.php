@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('clearances', function (Blueprint $table) {
             $table->id();
-            $table->string('bmet_clearance')->nullable();
-            $table->string('air_ticket')->nullable();
+            $table->text('bmet_clearance')->nullable();
+            $table->text('air_ticket')->nullable();
             $table->unsignedBigInteger('candidate_id');
             $table->unsignedBigInteger('create_by');
             $table->foreign('candidate_id')->references('id')->on('candidates')->onDelete('cascade')->onUpdate('cascade');

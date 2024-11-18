@@ -455,6 +455,7 @@
     <script src="{{ asset('/assets/js/forms/select2.init.js') }}"></script>
     <script src="{{ asset('/assets/js/apps/invoice.js') }}"></script>
     <script src="{{ asset('/assets/js/apps/jquery.PrintArea.js') }}"></script>
+    <script src="{{ asset('/assets/js/district.js') }}"></script>
 
 </body>
 

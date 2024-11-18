@@ -47,6 +47,7 @@ class CandidateController extends Controller
         $validate = $request->validate([
             'name' => 'required',
             'dob' => 'required',
+            'job_title' => 'required',
             'group_id' => 'required',
             'total_cost'=> 'required',
             'agent_user_id' => 'required',
@@ -59,6 +60,7 @@ class CandidateController extends Controller
             'village' => 'required',
             'thana' => 'required',
             'district' => 'required',
+            'division' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'emergency_contact_name' => 'required',
@@ -69,10 +71,13 @@ class CandidateController extends Controller
             'gender' => 'required',
         ]);
 
+        //  return $request->all();
+
         $candidate = new Candidate();
         $candidate->name = $request->name;
         $candidate->dob = $request->dob;
         $candidate->country = $request->country;
+        $candidate->job_title = $request->job_title;
         $candidate->total_cost = $request->total_cost;
         $candidate->gender = $request->gender;
         $candidate->group_id = $request->group_id;
@@ -84,6 +89,7 @@ class CandidateController extends Controller
         $candidate->village = $request->village;
         $candidate->thana = $request->thana;
         $candidate->district = $request->district;
+        $candidate->division = $request->division;
         $candidate->phone = $request->phone;
         $candidate->email = $request->email;
         $candidate->emergency_contact_name = $request->emergency_contact_name;
@@ -199,6 +205,7 @@ else{
             'dob' => 'required',
             'group_id' => 'required',
             'total_cost'=> 'required',
+            'job_title' => 'required',
             'agent_user_id' => 'required',
             'country' => 'required',
             'marital_status' => 'required',
@@ -209,6 +216,7 @@ else{
             'village' => 'required',
             'thana' => 'required',
             'district' => 'required',
+            'division' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'emergency_contact_name' => 'required',
@@ -225,6 +233,7 @@ else{
         $candidate->dob = $request->dob;
         $candidate->country = $request->country;
         $candidate->total_cost = $request->total_cost;
+        $candidate->job_title = $request->job_title;
         $candidate->gender = $request->gender;
         $candidate->group_id = $request->group_id;
         $candidate->marital_status = $request->marital_status;
@@ -235,6 +244,7 @@ else{
         $candidate->village = $request->village;
         $candidate->thana = $request->thana;
         $candidate->district = $request->district;
+        $candidate->division = $request->division;
         $candidate->phone = $request->phone;
         $candidate->email = $request->email;
         $candidate->emergency_contact_name = $request->emergency_contact_name;

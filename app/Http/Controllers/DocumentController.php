@@ -51,7 +51,7 @@ class DocumentController extends Controller
             $imageUrls = [];
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
-                    $path = $image->store('uploads/'.$candidate->name.'-'.$candidate->email.'/'.$document_type, 'public');
+                    $path = $image->store('uploads/'.$candidate->name, 'public');
                     $imageUrls[] = '/storage/' . $path;
                 }
             }
@@ -67,7 +67,8 @@ class DocumentController extends Controller
 
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $image) {
-                    $path = $image->store('uploads/'.$candidate->name.'-'.$candidate->email.'/'.$document_type, 'public');
+                    $path = $image->store('uploads/'.$candidate->name, 'public');
+
 
                     $imageUrls[] = '/storage/' . $path;
                 }

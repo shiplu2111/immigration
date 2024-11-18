@@ -51,7 +51,7 @@ input[type="number"] {
                       @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="  form-label">Country to Apply</label>
                           <div id="the-basics" >
@@ -72,7 +72,20 @@ input[type="number"] {
                       @enderror
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="job_title" class="form-label">Job Title</label>
+                          <input type="text" name="job_title" class="form-control" id="job_title" placeholder="Enter job title">
+
+                          @error('job_title')
+                          <div class="d-flex align-items-center  me-3 me-md-0">
+                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
+                              Required
+                            </div>
+                      @enderror
+                     </div>
+                    </div>
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Birth Place</label>
                           <input type="text" name="birth_place" class="form-control" id="exampleInputfirstname4" placeholder="Enter Birth Place">
@@ -85,10 +98,10 @@ input[type="number"] {
                       @enderror
                      </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="total_cost" class="form-label">Total Cost</label>
-                          <input type="number" name="total_cost" class="form-control" id="total_cost" placeholder="Enter total total_cost" required>
+                          <input type="number" name="total_cost" class="form-control" id="total_cost" placeholder="Enter total cost" required>
 
                           @error('total_cost')
                           <div class="d-flex align-items-center  me-3 me-md-0">
@@ -118,7 +131,7 @@ input[type="number"] {
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label"> Gender</label>
-                          <select name="gender" class=" select2 form-select @error('gender') is-invalid @enderror form-control" aria-label="Default select example">
+                          <select name="gender" class="  form-select @error('gender') is-invalid @enderror form-control" aria-label="Default select example">
 
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -176,6 +189,41 @@ input[type="number"] {
                       @enderror
                      </div>
                     </div>
+
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="division" class="form-label">Division</label>
+                            <select class="form-select  select2 " name="division" id="divisions" onchange="divisionsList();">
+                                <option disabled selected>Select Division</option>
+                                <option value="Barishal">Barishal</option>
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Khulna">Khulna</option>
+                                <option value="Mymensingh">Mymensingh</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Rangpur">Rangpur</option>
+                                <option value="Sylhet">Sylhet</option>
+                            </select>
+
+                     </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">District</label>
+                          <select name="district" class=" select2 form-select @error('district') is-invalid @enderror form-control" id="distr" onchange="thanaList();" required></select>
+
+
+                     </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">Police Station</label>
+                          <select name="thana" class=" select2 form-select @error('thana') is-invalid @enderror form-control" id="polic_sta" required></select>
+
+
+                      </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Village</label>
@@ -187,30 +235,6 @@ input[type="number"] {
                             </div>
                       @enderror
                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">Thana</label>
-                          <input type="text" name="thana" class="form-control" id="exampleInputfirstname4" placeholder="Enter Thana">
-                          @error('thana')
-                          <div class="d-flex align-items-center  me-3 me-md-0">
-                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                              Required
-                            </div>
-                      @enderror
-                     </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">District</label>
-                          <input type="text" name="district" class="form-control" id="exampleInputfirstname4" placeholder="Enter District">
-                          @error('district')
-                          <div class="d-flex align-items-center  me-3 me-md-0">
-                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                              Required
-                            </div>
-                      @enderror
-                      </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
