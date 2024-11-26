@@ -14,7 +14,14 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table-> string('payment_type')->nullable();
+        // payment_type for group or individual or agent
+
             $table-> double('payment_amount')->nullable();
+            $table-> string('pay_type')->nullable();
+        // pay_type for bank,bkash,cash
+
+            $table->text('document')->nullable();
+            $table->text('bank_name')->nullable();
             $table-> unsignedBigInteger('group_id')->nullable();
             $table-> unsignedBigInteger('individual_id')->nullable();
             $table-> unsignedBigInteger('agent_id')->nullable();

@@ -27,6 +27,7 @@
                             <th>Company Name</th>
                             <th>Phone Number</th>
                             <th>Email</th>
+                            <th>Groups</th>
                             <th>Status</th>
                             <th>Action</th>
                           </tr>
@@ -46,6 +47,23 @@
                             <td>{{$agent->company_name}}</td>
                             <td>{{$agent->phone}}</td>
                             <td>{{ $agent['user']['email'] }}</td>
+                            <td>
+                                @php
+                                    $groupIds = json_decode($agent->group_id, true);
+                                    if($groupIds == null) $groupIds = [];
+                                    $groupNames = \App\Models\Group::whereIn('id', $groupIds)->pluck('group_name');
+                                @endphp
+
+                                @if($groupNames && count($groupNames))
+
+                                        @foreach($groupNames as $group_name)
+                                            <span class="badge bg-primary">{{ $group_name }}</span>
+                                        @endforeach
+
+                                @else
+                                    No Groups
+                                @endif
+                            </td>
                             <td>{{$user_data->status}}</td>
                             <td  class="text-center">
                                 <span >
@@ -63,18 +81,7 @@
 
                           <!-- end row -->
                         </tbody>
-                        <tfoot>
-                          <!-- start row -->
-                          <tr>
-                            <th>Name</th>
-                            <th>Company Name</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
-                          <!-- end row -->
-                        </tfoot>
+
                       </table>
                     </div>
                   </div>

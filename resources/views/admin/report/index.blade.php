@@ -97,21 +97,26 @@
                                     <th class="text-center">#</th>
                                     <th class="text-center">Date</th>
                                     <th class="text-center">Candidate Name</th>
+                                    <th class="text-center">Job Title</th>
+                                    <th class="text-center">Payment Method</th>
+                                    <th class="text-center">Receipt</th>
+                                    <th class="text-center">Transection ID/BY</th>
                                     <th class="text-center">Passport</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-end">Total Amount</th>
                                     <th class="text-end">Paid Amount</th>
-                                    <th class="text-end">Due Amount</th>
                                   </tr>
                                   <!-- end row -->
                                 </thead>
                                 <tbody>
                                   <!-- start row -->
                                    @php
+
                                        $i=1;
                                        $total_paid=0;
                                        $total_due=0;
                                        $total_amount=0;
+                                       $subtotal=0;
                                    @endphp
                                    @if ($individual_payments->count()==0)
                                    <tr>
@@ -122,26 +127,51 @@
                                    @foreach ($individual_payments as $payment)
 
                                    @php
-                                       $total_paid+=$payment->total_payment;
-                                       $total_due+=$payment->total_cost-$payment->total_payment;
-                                       $total_amount+=$payment->total_cost;
+                                        $candidate= App\Models\Candidate::find($payment->individual_id);
+                                        $total_paid+=$payment->payment_amount;
+                                        $total_due+=$candidate->total_cost-$total_paid;
+                                        $total_amount=$candidate->total_cost;
+                                        $subtotal+=$total_paid;
                                    @endphp
                                   <tr>
                                     <td class="text-center">{{$i++}}</td>
-                                    <td class="text-center">{{date('d-M-Y', strtotime($payment->last_update))}}</td>
-                                    <td  class="text-center">{{ $payment->name }}</td>
-                                    <td class="text-center">{{ $payment->passport_number }}</td>
-                                    <td class="text-center">{{ $payment->status }}</td>
-                                    <td class="text-end">{{number_format($payment->total_cost, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($payment->total_payment, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($payment->total_cost-$payment->total_payment, 0, '.', ',')}} Taka</td>
+                                    <td class="text-center">{{date('d-M-Y', strtotime($payment->created_at))}}</td>
+                                    <td  class="text-center">{{ $candidate->name }}</td>
+                                    <td class="text-center">{{ $candidate->job_title }}</td>
+                                    <td class="text-center">{{ $payment->pay_type  }}</td>
+                                    <td class="text-center">
+                                    <img src="{{ asset($payment->document) }}" alt="Document Image"
+                                        width="30px" height="30px"
+                                        style="border-radius: 10px; cursor: pointer;"
+                                        data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}">
+
+                                    </td>
+                                    <td class="text-center">{{ $payment->bank_name }}</td>
+                                    <td class="text-center">{{ $candidate->passport_number }}</td>
+                                    <td class="text-center">{{ $candidate->status }}</td>
+                                    <td class="text-end">{{number_format($candidate->total_cost, 0, '.', ',')}} Taka</td>
+                                    <td class="text-end">{{number_format($total_paid, 0, '.', ',')}} Taka</td>
+
                                   </tr>
+                                  <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1" aria-labelledby="imageModalLabel{{ $loop->iteration }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel{{ $loop->iteration }}">Payment Recept</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset($payment->document) }}" alt="Full Image" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                   @endforeach
                                   <tr class="bg-black text-white">
-                                    <td colspan="5" class="text-end">Total</td>
-                                    <td class="text-end">{{number_format($total_amount, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($total_paid, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($total_due, 0, '.', ',')}} Taka</td>
+                                    <td colspan="10" class="text-end">Total</td>
+
+                                    <td class="text-end">{{number_format($subtotal, 0, '.', ',')}} Taka</td>
+
                                   </tr>
 
                                   <!-- end row -->

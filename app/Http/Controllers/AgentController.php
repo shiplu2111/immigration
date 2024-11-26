@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\User;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 
 class AgentController extends Controller
 {
@@ -15,12 +16,15 @@ class AgentController extends Controller
      */
     public function index()
     {
-        // $agents= User::with('agentInfo')->get();
-        $agents = Agent::with('user')->get();
-        // return $agents;
+        $agents = Agent::all();
 
+        // Attach group names to each agent
+        // foreach ($agents as $agent) {
+        //     $groupIds = json_decode($agent->group_id); // Decode the JSON string
+        //     $agent->group_names = Group::whereIn('id', $groupIds)->pluck('group_name');
+        // }
         // return $agents;
-        // $agents = Agent::orderBy('id', 'desc')->get();
+        $agents = Agent::with('user')->get();
         return view('admin.agent.index')->with('agents', $agents);
     }
 
@@ -29,7 +33,9 @@ class AgentController extends Controller
      */
     public function create()
     {
-        return view('admin.agent.create');
+        $groups = Group::all()->where('group_name', '!=', 'Individual');
+        // return $groups;
+        return view('admin.agent.create')->with('groups', $groups);
     }
 
     /**
@@ -37,6 +43,7 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -55,12 +62,14 @@ class AgentController extends Controller
 
         $agent= new Agent();
         $agent->company_name=$request->company_name;
+        $agent->group_id= json_encode($request->group_id);
         $agent->phone=$request->phone;
         $agent->address_one=$request->address_one;
         $agent->address_two=$request->address_two;
         $agent->user_id=$user->id;
         $agent->create_by=auth()->user()->id;
         $agent->save();
+        // return $agent;
         if ($agent) {
             return redirect()->route('agents')->with('success', 'Agent created successfully');
         }

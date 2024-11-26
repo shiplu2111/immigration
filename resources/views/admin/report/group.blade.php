@@ -101,9 +101,11 @@
                                     <th class="text-center">Group Name</th>
                                     <th class="text-center">Group Code</th>
                                     <th class="text-center">Status</th>
+                                    <th>Method</th>
+                                    <th>Recept</th>
                                     <th class="text-end">Total Amount</th>
                                     <th class="text-end">Paid Amount</th>
-                                    <th class="text-end">Due Amount</th>
+                                    <th class="text-end">Created By</th>
                                   </tr>
                                   <!-- end row -->
                                 </thead>
@@ -123,27 +125,48 @@
                                    @endif
                                    @foreach ($group_payments as $payment)
 
+
                                    @php
-                                       $total_paid+=$payment->total_payment;
-                                       $total_due+=$payment->total_amount-$payment->total_payment;
-                                       $total_amount+=$payment->total_amount;
+                                    $group_details=App\Models\Group::find($payment->group_id);
+                                    $user_details=App\Models\User::find($payment->create_by);
+                                    $total_paid+=$payment->payment_amount;
                                    @endphp
                                   <tr>
                                     <td class="text-center">{{$i++}}</td>
-                                    <td class="text-center">{{date('d-M-Y', strtotime($payment->last_update))}}</td>
-                                    <td  class="text-center">{{ $payment->group_name }}</td>
-                                    <td class="text-center">{{ $payment->group_code }}</td>
-                                    <td class="text-center">{{ $payment->group_status }}</td>
-                                    <td class="text-end">{{number_format($payment->total_amount, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($payment->total_payment, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($payment->total_amount-$payment->total_payment, 0, '.', ',')}} Taka</td>
+                                    <td class="text-center">{{date('d-M-Y', strtotime($payment->created_at))}}</td>
+                                    <td  class="text-center">{{ $group_details->group_name }}</td>
+                                    <td class="text-center">{{ $group_details->group_code }}</td>
+                                    <td class="text-center">{{ $group_details->status }}</td>
+                                    <td>{{ $payment->pay_type }}</td>
+                                    <td class="text-center">
+
+                                        <img src="{{ asset($payment->document) }}" alt="Document Image"
+                                        width="30px" height="30px"
+                                        style="border-radius: 10px; cursor: pointer;"
+                                        data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}">
+                                    </td>
+                                    <td class="text-end">{{number_format($group_details->total_cost, 0, '.', ',')}} Taka</td>
+                                    <td class="text-end">{{number_format($payment->payment_amount, 0, '.', ',')}} Taka</td>
+                                    <td class="text-end">{{$user_details->name}} </td>
                                   </tr>
+                                  <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1" aria-labelledby="imageModalLabel{{ $loop->iteration }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel{{ $loop->iteration }}">Payment Recept</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset($payment->document) }}" alt="Full Image" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                   @endforeach
                                   <tr class="bg-black text-white">
-                                    <td colspan="5" class="text-end">Total</td>
-                                    <td class="text-end">{{number_format($total_amount, 0, '.', ',')}} Taka</td>
+                                    <td colspan="8" class="text-end">Total</td>
                                     <td class="text-end">{{number_format($total_paid, 0, '.', ',')}} Taka</td>
-                                    <td class="text-end">{{number_format($total_due, 0, '.', ',')}} Taka</td>
+                                    <td class="text-end"> </td>
                                   </tr>
 
                                   <!-- end row -->

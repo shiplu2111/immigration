@@ -24,13 +24,15 @@
                         <thead>
                           <!-- start row -->
                           <tr>
-                            <th>Payment Date</th>
-                            <th>Payment Type</th>
-                            <th>Payment Amount</th>
-                            <!-- <th>Group Name</th> -->
+                            <th> Date</th>
+                            <th> Type</th>
+                            <th> Amount</th>
+                             <th>Recept</th>
+                             <th>Method</th>
                             <th>User Name</th>
                             <th>Total Amount</th>
                             <th>Due Amount</th>
+                            <th>Created By</th>
                             <!-- <th>Action</th> -->
                           </tr>
                           <!-- end row -->
@@ -43,12 +45,20 @@
 
                         @foreach ($payments as $payment )
 
-
+                                @php
+                                    $user = App\Models\User::where('id', $payment->create_by)->first();
+                                @endphp
                           <tr>
                           <td>{{Carbon\Carbon::parse($payment->created_at)->format('d-m-Y') }}</td>
                             <td>{{$payment->payment_type}}</td>
                             <td>{{$payment->payment_amount}}</td>
-                            <!-- <td>Group Name</td> -->
+                            <td>
+                                    <img src="{{ asset($payment->document) }}" alt="Document Image"
+                                        width="30px" height="30px"
+                                        style="border-radius: 10px; cursor: pointer;"
+                                        data-bs-toggle="modal" data-bs-target="#imageModal{{ $loop->iteration }}">
+                                </td>
+                            <td>{{$payment->pay_type}}</td>
                             @php
                                     if($payment->payment_type == 'group'){
                                         $group = App\Models\Group::where('id', $payment->group_id)->first();
@@ -83,26 +93,23 @@
 
                                 @endif
                             </td>
-                            <!-- <td><div class="dropdown dropstart">
-                          <a href="javascript:void(0)" class="text-muted" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="ti ti-dots-vertical fs-6"></i>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="">
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="">
-                                <i class="fs-4 ti ti-plus"></i>Details
-                              </a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="">
-                                <i class="fs-4 ti ti-edit"></i>Edit
-                              </a>
-                            </li>
+                            <td>{{$user->name}}</td>
 
-                          </ul>
-                        </div></td> -->
 
                           </tr>
+                          <div class="modal fade" id="imageModal{{ $loop->iteration }}" tabindex="-1" aria-labelledby="imageModalLabel{{ $loop->iteration }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="imageModalLabel{{ $loop->iteration }}">Payment Recept</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <img src="{{ asset($payment->document) }}" alt="Full Image" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                           @endforeach
 
                           <!-- end row -->
@@ -110,20 +117,7 @@
 
                           <!-- end row -->
                         </tbody>
-                        <tfoot>
-                          <!-- start row -->
-                          <tr>
-                          <th>Payment Date</th>
-                            <th>Payment Type</th>
-                            <th>Payment Amount</th>
-                            <!-- <th>Group Name</th> -->
-                            <th>User Name</th>
-                            <th>Total Amount</th>
-                            <th>Due Amount</th>
-                            <!-- <th>Action</th> -->
-                          </tr>
-                          <!-- end row -->
-                        </tfoot>
+
                       </table>
                     </div>
                   </div>

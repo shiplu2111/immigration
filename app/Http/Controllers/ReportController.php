@@ -19,17 +19,9 @@ class ReportController extends Controller
     public function index()
     {
 
-            $individual_payments = DB::table('payments')
-            ->select('candidates.name',
-            'candidates.passport_number',
-            'candidates.status',
-            'candidates.total_cost',
-             DB::raw('SUM(payments.payment_amount) as total_payment'),
-             DB::raw('MAX(payments.created_at) as last_update'))
-            ->join('candidates', 'candidates.id', '=', 'payments.individual_id')
-            ->where('payment_type', 'individual')
-            ->groupBy('candidates.id', 'candidates.name','candidates.passport_number', 'candidates.status', 'candidates.total_cost')
+            $individual_payments = DB::table('payments')->where('payment_type', 'individual')
             ->paginate(10);
+            // return $individual_payments;
 
 
         return view('admin.report.index')->with('individual_payments', $individual_payments);
@@ -83,6 +75,7 @@ class ReportController extends Controller
 
     public function filter_group( Request $request)
     {
+
         $validated = $request->validate([
             'start_date' => 'required|date|before_or_equal:end_date',
             'end_date' => 'required|date|after_or_equal:start_date',
@@ -90,30 +83,12 @@ class ReportController extends Controller
             'start_date.before_or_equal' => 'The start date must be before or equal to the end date.',
             'end_date.after_or_equal' => 'The end date must be after or equal to the start date.',
         ]);
-            $group_payments = DB::table('payments')
-                ->select(
-                'groups.group_name',
-                'groups.group_code',
-                'groups.status as group_status',
-                'groups.editable',
-                'groups.created_by as group_created_by',
-            DB::raw('SUM(payments.payment_amount) as total_payment'),
-            DB::raw('SUM(payments.total_amount) as total_amount'),
-            DB::raw('SUM(payments.due_amount) as due_amount'),
-            DB::raw('MAX(payments.created_at) as last_update')
-        )
-        ->join('groups', 'groups.id', '=', 'payments.group_id')  // Join with groups
+        $group_payments = DB::table('payments')
         ->where('payments.payment_type', 'group')
         ->whereBetween('payments.created_at', [$request->start_date, $request->end_date])
-        ->groupBy(
-            'groups.id',
-            'groups.group_name',
-            'groups.group_code',
-            'groups.status',
-            'groups.editable',
-            'groups.created_by'
-        )
         ->paginate(10);
+
+
         return view('admin.report.group')
         ->with('group_payments', $group_payments);
     }
@@ -127,31 +102,34 @@ class ReportController extends Controller
     }
     public function group_reports()
     {
+        $group_payments = DB::table('payments')->where('payment_type', 'group')->paginate(10);
+        // return $group_payments;
 
 
-        $group_payments = DB::table('payments')
-    ->select(
-        'groups.group_name',
-        'groups.group_code',
-        'groups.status as group_status',
-        'groups.editable',
-        'groups.created_by as group_created_by',
-        DB::raw('SUM(payments.payment_amount) as total_payment'),
-        DB::raw('SUM(payments.total_amount) as total_amount'),
-        DB::raw('SUM(payments.due_amount) as due_amount'),
-        DB::raw('MAX(payments.created_at) as last_update')
-    )
-    ->join('groups', 'groups.id', '=', 'payments.group_id')  // Join with groups
-    ->where('payments.payment_type', 'group')
-    ->groupBy(
-        'groups.id',
-        'groups.group_name',
-        'groups.group_code',
-        'groups.status',
-        'groups.editable',
-        'groups.created_by'
-    )
-    ->paginate(10);
+    //     $group_payments = DB::table('payments')
+    // ->select(
+    //     'groups.group_name',
+    //     'groups.group_code',
+    //     'groups.status as group_status',
+    //     'groups.editable',
+    //     'groups.created_by as group_created_by',
+    //     DB::raw('SUM(payments.payment_amount) as total_payment'),
+    //     DB::raw('SUM(payments.total_amount) as total_amount'),
+    //     DB::raw('SUM(payments.due_amount) as due_amount'),
+    //     DB::raw('MAX(payments.created_at) as last_update')
+    // )
+    // ->join('groups', 'groups.id', '=', 'payments.group_id')  // Join with groups
+    // ->where('payments.payment_type', 'group')
+    // ->groupBy(
+    //     'groups.id',
+    //     'groups.group_name',
+    //     'groups.group_code',
+    //     'groups.status',
+    //     'groups.editable',
+    //     'groups.created_by'
+    // )
+
+    // return $group_payments;
     return view('admin.report.group')
     ->with('group_payments', $group_payments);
     }

@@ -15,12 +15,12 @@
 
                       <div class="col-lg-6">
                         <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">Agent Name</label>
-                          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <label for="exampleInputfirstname4" class="form-label">Sub-Agent Name</label>
+                          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Sub-Agent Name">
                         @error('name')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                              Name is required.
+                              Sub-Agent Name is required.
                             </div>
                         @enderror
                         </div>
@@ -28,8 +28,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">Agent Email</label>
-                          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <label for="exampleInputfirstname4" class="form-label">Sub-Agent Email</label>
+                          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Email">
                         @error('email')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -42,7 +42,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Company Name</label>
-                          <input type="text" name="company_name" class="form-control @error('company_name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <input type="text" name="company_name" class="form-control @error('company_name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Company Name">
                         @error('company_name')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -55,7 +55,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Mobile No</label>
-                          <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Mobile Number">
                         @error('phone')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -94,7 +94,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label"> Agent</label>
-                          <select name="agent_id" class="form-select @error('agent_id') is-invalid @enderror form-control" aria-label="Default select example">
+                          <select name="agent_id" class="form-select @error('agent_id') is-invalid @enderror form-control" aria-label="Default select example" required>
                            @foreach ($agents as $agent)
                             <option value="{{$agent->id}}">{{$agent->name}}</option>
                            @endforeach

@@ -8,7 +8,11 @@
         <div class="row">
             <div class="card">
                 <div class="card-body p-4">
-                    <h5 class="fs-4 fw-semibold mb-4">Group Info</h5>
+                    <div class="mb-4 d-flex align-items-center justify-content-between">
+                    <h5 class="fs-4 fw-semibold mb-4">Create New Agent</h5>
+                    <a class="btn btn-sm btn-primary" href="{{ url()->previous() }} ">
+                        <i class="ti ti-arrow-left"></i> Go Back</a>
+                    </div>
                         <form method="POST" action="{{ route('agent.store') }}">
                         @csrf
                     <div class="row">
@@ -29,7 +33,7 @@
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Agent Email</label>
-                          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Email">
                         @error('email')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -39,10 +43,24 @@
                         </div>
 
                     </div>
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                                <label for="exampleInputfirstname4" class="form-label">Groups</label>
+                                <select name="group_id[]" class="select2 form-select @error('group_id') is-invalid @enderror"
+                                    aria-label="Default select example" multiple="multiple" placeholder="Select Group">
+                                    @foreach ($groups as $group)
+                                        <option value="{{ $group->id }}">{{ $group->group_name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('group_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                        </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Company Name</label>
-                          <input type="text" name="company_name" class="form-control @error('company_name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
+                          <input type="text" name="company_name" class="form-control @error('company_name') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Company">
                         @error('company_name')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
@@ -52,19 +70,7 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-6">
-                        <div class="mb-4">
-                          <label for="exampleInputfirstname4" class="form-label">Mobile No</label>
-                          <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Name">
-                        @error('phone')
-                            <div class="d-flex align-items-center  me-3 me-md-0">
-                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                             Please Enter Valid Mobile Number.
-                            </div>
-                        @enderror
-                        </div>
 
-                    </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
                           <label for="exampleInputfirstname4" class="form-label">Address One</label>
@@ -73,7 +79,7 @@
                         @error('address_one')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
-                             Please Enter Valid Mobile Number.
+                             Please Enter Valid Address.
                             </div>
                         @enderror
                         </div>
@@ -86,10 +92,23 @@
                         @error('address_two')
                             <div class="d-flex align-items-center  me-3 me-md-0">
                               <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
+                             Please Enter Valid Address.
+                            </div>
+                        @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                          <label for="exampleInputfirstname4" class="form-label">Mobile No</label>
+                          <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="exampleInputfirstname4" placeholder="Enter Mobile">
+                        @error('phone')
+                            <div class="d-flex align-items-center  me-3 me-md-0">
+                              <i class="ti ti-info-circle fs-5 me-2 text-warning"></i>
                              Please Enter Valid Mobile Number.
                             </div>
                         @enderror
                         </div>
+
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">

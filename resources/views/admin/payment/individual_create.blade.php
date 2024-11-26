@@ -8,7 +8,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body p-4">
-                <form onsubmit="validatePayment()" action="{{ route('payment.store') }}" method="POST" >
+                <form onsubmit="validatePayment()" action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                   <div class="card-body">
                     <div class="d-flex  align-items-center">
@@ -33,6 +33,32 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="email2" class="form-label">Payment Method</label>
+                                <select name="pay_type" id="paymentType" class="form-select" required>
+                                    <option value="default" disabled selected>Select Payment Method</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="bank">Bank</option>
+                                    <option value="online">Online Payment</option>
+                                </select>
+                            </div>
+                       </div>
+
+                        <div class="col-md-12">
+                            <div class="mb-3" id="fileInputGroup" >
+                                <label for="document" class="form-label" id="dynamicLabel_1">Upload Document</label>
+                                <input type="file" name="document" id="document" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <div class="mb-3" id="bankInputGroup" style="display: none;">
+                                <label for="bank_name" class="form-label" id="dynamicLabel">Bank Name</label>
+                                <input type="text" name="bank_name" id="bank_name" class="form-control" placeholder="Enter Bank Name / Mobile Banking Name / Cash Receipt"/>
+                            </div>
+                        </div>
                       <div class="col-12 col-md-6 col-lg-4">
                         <div class="mb-3">
                         <label for="cono1" class="form-label">Total Cost</label>
@@ -105,4 +131,38 @@
     return true;
   }
 </script>
+<script>
+            const paymentTypeSelect = document.getElementById('paymentType');
+            const fileInputGroup = document.getElementById('fileInputGroup');
+            const bankInputGroup = document.getElementById('bankInputGroup');
+            const dynamicLabel = document.getElementById('dynamicLabel');
+            const dynamicLabel_1 = document.getElementById('dynamicLabel_1');
+
+            paymentTypeSelect.addEventListener('change', function () {
+                const selectedValue = this.value;
+
+                // Reset visibility and content
+                fileInputGroup.style.display = 'none';
+                bankInputGroup.style.display = 'none';
+
+                if (selectedValue === 'cash') {
+                    bankInputGroup.style.display = 'block';
+                    fileInputGroup.style.display = 'block';
+                    dynamicLabel_1.textContent = 'Cash Receipt';
+                    dynamicLabel.textContent = 'Cash Receipt Number';
+
+
+                } else if (selectedValue === 'bank') {
+                    bankInputGroup.style.display = 'block';
+                    fileInputGroup.style.display = 'block';
+                    dynamicLabel_1.textContent = 'Bank slip';
+                    dynamicLabel.textContent = 'Bank Name';
+                } else if (selectedValue === 'online') {
+                    fileInputGroup.style.display = 'block';
+                    bankInputGroup.style.display = 'block';
+                    dynamicLabel_1.textContent = 'Online payment receipt';
+                    dynamicLabel.textContent = 'Mobile Banking Name and Transaction Number';
+                }
+            });
+        </script>
    </x-app-layout>

@@ -79,6 +79,11 @@
                                                     <i class="fs-4 ti ti-plus"></i> Add Payment
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a href="{{ route('payment.individual.details', $candidate->id) }}" class="dropdown-item d-flex align-items-center gap-3">
+                                                <i class="ti ti-info-circle"></i> Payment Details
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>

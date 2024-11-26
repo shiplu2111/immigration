@@ -80,6 +80,9 @@ Route::get('/payments', [PaymentController::class, 'index'])->name('payments');
 Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
 Route::get('/payment/group', [PaymentController::class, 'group'])->name('payment.group');
 Route::get('/payment/group/create/{id}', [PaymentController::class, 'group_create'])->name('payment.group.create');
+Route::get('/payment/group/details/{id}', [PaymentController::class, 'group_payment_details'])->name('payment.group.details');
+Route::get('/payment/candidate/details/{id}', [PaymentController::class, 'candidate_payment_details'])->name('payment.individual.details');
+
 
 Route::get('/payment/individual', [PaymentController::class, 'individual'])->name('payment.individual');
 Route::get('/payment/individual/create/{id}', [PaymentController::class, 'individual_create'])->name('payment.individual.create');
